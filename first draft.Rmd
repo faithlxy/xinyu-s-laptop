@@ -1,0 +1,57 @@
+---
+title: "Application of the p-Median Problem in Clinic Allocation"
+author: "xinyu"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Introduction
+Equity in access to health care services is a central policy goal in most publicly funded health care systems. Healthcare facilities provide the basic support for healthcare operations and services, and they are essential for effective operations of healthcare systems. Facility location is a critical factor in state planning of healthcare programs. An efficient facility location can save cost and improve the facility utilization, and improve geographical accessibility. 
+
+Inequity in access to the healthcare services is a well-known challenge in many developing countries, even developed counties may also have this problem. As demographic data changes, the current healthcare facilities may not be able to meet the medical equity, especially geographical accessibility. In the meanwhile, migration may also reduce hospital benefits and result in fewer jobs. In this case, new primary health care facilities are needed. For the accessibility of healthcare facilities, as survey showed that the distance to hospitals is a key factor when patients choose the healthcare service. There is a need for a quantitative methodology that allow health planners to identify potential locations for a new clinic. To solve this location-allocation problem, p-median model is beneficial. The objective of this research is trying to find the optimal location of new facilities in Erie county considering both benefits and fairness.
+
+
+# Data
+I would like to consider several factors to determine the potential locations including population younger than 18 and older than60, persons entered in 2010 or later, ratio of poverty. distance. 
+
+The location of fixed clinics is acquired from Erie County, NY Department of Health and Google Map.
+
+The census data are from United States Census Bureau.
+
+
+```{r}
+## acquire locations from google maps
+library(ggmap)
+library(ggplot2)
+library(censusapi)
+point=geocode(c('95 Franklin Street Buffalo','608 William Street Buffalo','501 Kensington Ave Buffalo','503 Kensington Avenue Buffalo','Erie County Health Mall'),output = 'latlon')
+point
+EireMap=qmap('erie county',zoom=13,color='bw')
+EireMap+geom_point(aes(x=lon,y=lat,colour='pink',size=4),data=point)
+
+```
+
+
+```{r}
+mycensuskey='cd97f40e777fea11e9550a7b6c5fd363ef4c05cb'
+availablevars=listCensusMetadata(name="acs1",vintage=2015,type="v")
+View(availablevars)
+```
+
+
+# Results
+
+
+
+# Conclusions
+
+
+
+
+# References
+`
+
+
+
+

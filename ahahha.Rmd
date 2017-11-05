@@ -36,6 +36,12 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 Healthcare facilities is essential for effective operations of healthcare systems. An efficient facility location can save cost and improve the facility utilization. Equity in access to the healthcare services is a well-known challenge in many developing countries, even developed counties may also have this problem. As demographic data changes, the current healthcare facilities may not be able to meet the medical equity, especially geographical accessibility. In this case, new primary health care facilities are needed. The objective of this research is to try to find the optimal location of new facilities in Erie county.
 
 ```{r}
+## acquire locations from google maps
+library(ggmap)
+point=geocode(c('95 Franklin Street Buffalo','608 William Street Buffalo','501 Kensington Ave Buffalo','503 Kensington Avenue Buffalo','Erie County Health Mall'),output = 'latlon')
+point
+EireMap=qmap('erie county',zoom=13,color='bw')
+EireMap+geom_point(aes(x=lon,y=lat,colour='pink',size=4),data=point)
 
 ```
 
